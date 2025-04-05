@@ -26,5 +26,11 @@ export const getAllTires = ({
 };
 
 export const getTireById = (id: Tire["id"]): Promise<Tire> => {
-  return api.get(`/tires/${id}`);
+  return api
+    .get(`/tires/${id}`)
+    .then((response) => response.data)
+    .catch((err) => {
+      console.error("Erro ao buscar pneu:", err);
+      throw err;
+    });
 };

@@ -1,13 +1,16 @@
 import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router";
+import Tire from "./pages/Tire.tsx";
+import Home from "./pages/Home.tsx";
 
 function App() {
   return (
-    <div className="h-full flex flex-col gap-y-4 items-center">
-      <h1 className="text-blue-300">Prolog</h1>
-      <h2>Gestão de frota</h2>
-
-      <button onClick={() => console.log("oi")}>Obter lista de pneus</button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path=":tireId" element={<Tire />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

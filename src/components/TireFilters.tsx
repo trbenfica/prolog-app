@@ -1,14 +1,21 @@
 import { useState } from "react";
-import { Box, TextField, Typography } from "@mui/material";
+import { Backdrop, Box, TextField, Typography } from "@mui/material";
 import { TireFilterState, TireRequestParams } from "../types/types";
 import AppButton from "./AppButton";
 
 interface TireFiltersProps {
-  onChange: (filters: TireFilterState) => void;
+  applyFilter: (filters: TireFilterState) => void;
   initialState: TireFilterState;
+  open: boolean;
+  handleClose: () => void;
 }
 
-const TireFilters = ({ onChange, initialState }: TireFiltersProps) => {
+const TireFilters = ({
+  applyFilter,
+  initialState,
+  open,
+  handleClose,
+}: TireFiltersProps) => {
   const [filters, setFilters] = useState<TireFilterState>(initialState);
 
   const handleChange = (
@@ -19,106 +26,167 @@ const TireFilters = ({ onChange, initialState }: TireFiltersProps) => {
     setFilters(updatedFilters);
   };
 
+  const handleRemoveFilters = () => {
+    applyFilter({});
+    handleClose();
+  };
+
   const handleApplyFilter = () => {
-    onChange({ ...filters });
+    applyFilter({ ...filters });
+    handleClose();
   };
 
   return (
-    <Box display="flex" flexDirection="column" gap={2} sx={{ marginBottom: 5 }}>
-      <Typography variant="h6">Filtros</Typography>
+    <Backdrop
+      sx={(theme) => ({
+        color: "#fff",
+        zIndex: theme.zIndex.drawer + 1,
+      })}
+      open={open}
+    >
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap={2}
+        sx={{
+          backgroundColor: "white",
+          padding: "50px",
+          color: "black",
+          borderRadius: 8,
+          width: "40%",
+          minWidth: "600px",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4">Aplicar Filtros</Typography>
 
-      <TextField
-        label="Texto livre"
-        variant="outlined"
-        size="small"
-        onChange={(e) => handleChange("textQuery", e.target.value)}
-      />
+        <TextField
+          label="Texto livre"
+          variant="outlined"
+          size="small"
+          onChange={(e) => handleChange("textQuery", e.target.value)}
+          sx={{ width: "100%" }}
+          value={filters.textQuery}
+        />
 
-      <TextField
-        label="Número de série"
-        variant="outlined"
-        size="small"
-        onChange={(e) => handleChange("serialNumberTextQuery", e.target.value)}
-      />
+        <TextField
+          label="Número de série"
+          variant="outlined"
+          size="small"
+          onChange={(e) =>
+            handleChange("serialNumberTextQuery", e.target.value)
+          }
+          sx={{ width: "100%" }}
+          value={filters.serialNumberTextQuery}
+        />
 
-      <TextField
-        label="IDs de marcas (ex: 1,2,3)"
-        variant="outlined"
-        size="small"
-        onChange={(e) =>
-          handleChange(
-            "makeIds",
-            e.target.value
-              .split(",")
-              .map((id) => parseInt(id.trim()))
-              .filter((id) => !isNaN(id))
-          )
-        }
-      />
+        <TextField
+          label="IDs de marcas (ex: 1,2,3)"
+          variant="outlined"
+          size="small"
+          onChange={(e) =>
+            handleChange(
+              "makeIds",
+              e.target.value
+                .split(",")
+                .map((id) => parseInt(id.trim()))
+                .filter((id) => !isNaN(id))
+            )
+          }
+          sx={{ width: "100%" }}
+          value={filters.makeIds}
+        />
 
-      <TextField
-        label="IDs de modelos (ex: 1,2,3)"
-        variant="outlined"
-        size="small"
-        onChange={(e) =>
-          handleChange(
-            "modelIds",
-            e.target.value
-              .split(",")
-              .map((id) => parseInt(id.trim()))
-              .filter((id) => !isNaN(id))
-          )
-        }
-      />
+        <TextField
+          label="IDs de modelos (ex: 1,2,3)"
+          variant="outlined"
+          size="small"
+          onChange={(e) =>
+            handleChange(
+              "modelIds",
+              e.target.value
+                .split(",")
+                .map((id) => parseInt(id.trim()))
+                .filter((id) => !isNaN(id))
+            )
+          }
+          sx={{ width: "100%" }}
+          value={filters.modelIds}
+        />
 
-      <TextField
-        label="ID da banda (Tread Make ID)"
-        type="number"
-        variant="outlined"
-        size="small"
-        onChange={(e) => handleChange("treadMakeId", parseInt(e.target.value))}
-      />
+        <TextField
+          label="ID da banda (Tread Make ID)"
+          type="number"
+          variant="outlined"
+          size="small"
+          onChange={(e) =>
+            handleChange("treadMakeId", parseInt(e.target.value))
+          }
+          sx={{ width: "100%" }}
+          value={filters.treadMakeId}
+        />
 
-      <TextField
-        label="ID do modelo da banda (Tread Model ID)"
-        type="number"
-        variant="outlined"
-        size="small"
-        onChange={(e) => handleChange("treadModelId", parseInt(e.target.value))}
-      />
+        <TextField
+          label="ID do modelo da banda (Tread Model ID)"
+          type="number"
+          variant="outlined"
+          size="small"
+          onChange={(e) =>
+            handleChange("treadModelId", parseInt(e.target.value))
+          }
+          sx={{ width: "100%" }}
+          value={filters.treadModelId}
+        />
 
-      <TextField
-        label="Ciclos de vida atuais (ex: 0,1,2)"
-        variant="outlined"
-        size="small"
-        onChange={(e) =>
-          handleChange(
-            "currentLifeCycles",
-            e.target.value
-              .split(",")
-              .map((val) => parseInt(val.trim()))
-              .filter((v) => !isNaN(v))
-          )
-        }
-      />
+        <TextField
+          label="Ciclos de vida atuais (ex: 0,1,2)"
+          variant="outlined"
+          size="small"
+          onChange={(e) =>
+            handleChange(
+              "currentLifeCycles",
+              e.target.value
+                .split(",")
+                .map((val) => parseInt(val.trim()))
+                .filter((v) => !isNaN(v))
+            )
+          }
+          sx={{ width: "100%" }}
+          value={filters.currentLifeCycles}
+        />
 
-      <TextField
-        label="IDs de dimensões (ex: 1,2,3)"
-        variant="outlined"
-        size="small"
-        onChange={(e) =>
-          handleChange(
-            "dimensionsIds",
-            e.target.value
-              .split(",")
-              .map((val) => parseInt(val.trim()))
-              .filter((v) => !isNaN(v))
-          )
-        }
-      />
+        <TextField
+          label="IDs de dimensões (ex: 1,2,3)"
+          variant="outlined"
+          size="small"
+          onChange={(e) =>
+            handleChange(
+              "dimensionsIds",
+              e.target.value
+                .split(",")
+                .map((val) => parseInt(val.trim()))
+                .filter((v) => !isNaN(v))
+            )
+          }
+          sx={{ width: "100%" }}
+          value={filters.dimensionsIds}
+        />
 
-      <AppButton onClick={handleApplyFilter}>Aplicar Filtros</AppButton>
-    </Box>
+        <div className="flex gap-x-2 mt-2">
+          <AppButton color="success" onClick={handleApplyFilter}>
+            Aplicar Filtros
+          </AppButton>
+
+          <AppButton color="error" onClick={handleRemoveFilters}>
+            Remover Filtros
+          </AppButton>
+
+          <AppButton color="info" onClick={handleClose}>
+            Cancelar
+          </AppButton>
+        </div>
+      </Box>
+    </Backdrop>
   );
 };
 

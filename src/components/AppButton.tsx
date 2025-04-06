@@ -4,14 +4,27 @@ interface ButtonProps {
   children: any;
   onClick: () => void;
   isLoading?: boolean;
+  color?:
+    | "primary"
+    | "inherit"
+    | "secondary"
+    | "success"
+    | "error"
+    | "info"
+    | "warning";
 }
 
-const AppButton = ({ onClick, children, isLoading }: ButtonProps) => {
+const AppButton = ({
+  onClick,
+  children,
+  isLoading,
+  color = "primary",
+}: ButtonProps) => {
   return (
     <Button
       sx={{ borderRadius: "8px", fontWeight: 600 }}
       variant="contained"
-      color="primary"
+      color={color}
       onClick={onClick}
       loading={isLoading}
     >

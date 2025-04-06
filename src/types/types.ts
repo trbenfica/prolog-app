@@ -12,7 +12,7 @@ export interface TireRequestParams {
   pageSize: number;
   pageNumber: number;
 
-  // optionals from here
+  // opcionais
   tireStatuses?: TireStatuses;
   textQuery?: string;
   serialNumberTextQuery?: string;

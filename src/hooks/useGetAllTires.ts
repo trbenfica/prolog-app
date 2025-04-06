@@ -3,12 +3,12 @@ import { TireRequestParams } from "../types/types";
 import { getAllTires } from "../queries/tire.queries";
 
 const useGetAllTires = (params?: Partial<TireRequestParams>) => {
-  const { data, isPending, isError, error, refetch, isFetching } = useQuery({
+  const query = useQuery({
     queryKey: ["tires", params],
     queryFn: () => getAllTires(params ?? {}),
   });
 
-  return { data, isPending, isError, error, refetch, isFetching };
+  return { ...query };
 };
 
 export default useGetAllTires;

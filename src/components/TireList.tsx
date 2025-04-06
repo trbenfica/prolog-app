@@ -10,6 +10,7 @@ import { TireFilterState } from "../types/types";
 import TireFilters from "./TireFilters";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { LinearProgress, Stack } from "@mui/material";
+import ErrorAlert from "./ErrorAlert";
 
 const columns: GridColDef[] = [
   {
@@ -57,8 +58,7 @@ export const TireList = () => {
     });
 
   if (isError) {
-    console.error("error:", error.message);
-    return <p>error</p>;
+    return <ErrorAlert message={error.message} />;
   }
 
   return (
@@ -114,7 +114,7 @@ export const TireList = () => {
           )}
         </div>
 
-        <div className="flex items-center gap-x-2 self-start">
+        <div className="flex items-center gap-x-2 self-start mb-14">
           <AnnouncementIcon color="primary" fontSize="large" />
           <p>
             Clique no ícone

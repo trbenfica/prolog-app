@@ -3,20 +3,21 @@ import { useParams } from "react-router";
 import useGetTireById from "../hooks/useGetTireById";
 import { format } from "date-fns";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import ErrorAlert from "./ErrorAlert";
 
 export const TireDetails = () => {
   const params = useParams();
 
   if (!params.tireId || typeof params.tireId !== "string") {
-    return <p>error: tireId is invalid</p>;
+    return <ErrorAlert message="error: tireId is invalid" />;
   }
 
   const tireId = parseInt(params.tireId);
 
-  const { data: tire, isLoading, isError } = useGetTireById(tireId);
+  const { data: tire, isPending, isError, error } = useGetTireById(tireId);
 
-  if (isLoading) return <CircularProgress />;
-  if (isError || !tire) return <Typography>Erro ao carregar dados</Typography>;
+  if (isPending) return <CircularProgress />;
+  if (isError) return <ErrorAlert message={error.message} />;
 
   const rows = [
     { id: 1, label: "ID", value: tire.id },

@@ -8,7 +8,7 @@ export interface TireResponse {
 }
 
 export interface TireRequestParams {
-  branchOfficesId: number[];
+  branchOfficesId?: number[];
   pageSize: number;
   pageNumber: number;
 
@@ -23,6 +23,11 @@ export interface TireRequestParams {
   currentLifeCycles?: number[];
   dimensionsIds?: number[];
 }
+
+export type TireFilterState = Omit<
+  TireRequestParams,
+  "pageSize" | "pageNumber"
+>;
 
 export interface Tire {
   id: number;

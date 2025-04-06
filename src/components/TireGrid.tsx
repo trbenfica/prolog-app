@@ -12,14 +12,18 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import useGetAllTires from "../hooks/useGetAllTires";
+import TireFilters from "./TireFilters";
+import { TireFilterState } from "../types/types";
 
 const TireGrid = () => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(9);
+  const [filters, setFilters] = useState<TireFilterState>({});
 
   const { data, isPending, isError } = useGetAllTires({
     pageNumber: page - 1,
     pageSize,
+    ...filters,
   });
 
   if (isPending) return <div>Carregando...</div>;
@@ -29,8 +33,10 @@ const TireGrid = () => {
   const totalPages = data.lastPage ? currentPage : currentPage + 1;
 
   return (
-    <Box>
-      <Grid container spacing={2}>
+    <Box sx={{ width: "100%" }}>
+      <TireFilters onChange={setFilters} initialState={filters} />
+
+      <Grid container spacing={2} direction={"column"}>
         {data.content.map((tire) => (
           <Grid item xs={12} sm={6} md={4} key={tire.id}>
             <a href={`/tires/${tire.id}`}>
@@ -68,7 +74,7 @@ const TireGrid = () => {
               label="Itens por página"
               onChange={(e) => {
                 setPageSize(Number(e.target.value));
-                setPage(1); // reseta a página ao mudar o tamanho
+                setPage(1);
               }}
             >
               <MenuItem value={9}>9</MenuItem>

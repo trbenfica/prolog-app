@@ -24,12 +24,14 @@ h1 {
   font-family: "prompt", sans-serif;
   font-size: 40px;
   font-weight: 400;
+  color: var(--color-blue-400);
 }
 
 h2 {
   font-family: "prompt", sans-serif;
   font-size: 32px;
   font-weight: 400;
+  color: black;
 }
 
 h3 {

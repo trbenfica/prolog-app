@@ -8,13 +8,16 @@ import ErrorAlert from "./ErrorAlert";
 export const TireDetails = () => {
   const params = useParams();
 
-  if (!params.tireId || typeof params.tireId !== "string") {
-    return <ErrorAlert message="error: tireId is invalid" />;
-  }
-
-  const tireId = parseInt(params.tireId);
+  const tireId =
+    params.tireId && typeof params.tireId === "string"
+      ? parseInt(params.tireId)
+      : NaN;
 
   const { data: tire, isPending, isError, error } = useGetTireById(tireId);
+
+  if (isNaN(tireId)) {
+    return <ErrorAlert message="error: tireId is invalid" />;
+  }
 
   if (isPending) return <CircularProgress />;
   if (isError) return <ErrorAlert message={error.message} />;

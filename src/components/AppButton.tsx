@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 
 interface ButtonProps {
-  children: any;
+  children: React.ReactNode;
   onClick: () => void;
   isLoading?: boolean;
   color?:

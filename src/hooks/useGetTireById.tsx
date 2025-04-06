@@ -6,6 +6,7 @@ const useGetTireById = (tireId: Tire["id"]) => {
   const query = useQuery({
     queryKey: ["tires", tireId],
     queryFn: () => getTireById(tireId),
+    enabled: !isNaN(tireId),
   });
 
   return { ...query };

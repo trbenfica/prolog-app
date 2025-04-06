@@ -9,8 +9,8 @@ import { useState } from "react";
 import { TireFilterState } from "../types/types";
 import TireFilters from "./TireFilters";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import { LinearProgress, Stack } from "@mui/material";
 import ErrorAlert from "./ErrorAlert";
+import Loading from "./Loading";
 
 const columns: GridColDef[] = [
   {
@@ -98,19 +98,7 @@ export const TireList = () => {
               getRowId={(row) => row.id}
             />
           ) : (
-            <Stack
-              sx={{
-                width: "100%",
-                color: "grey.500",
-                height: "400px",
-                justifyContent: "center",
-              }}
-              spacing={2}
-            >
-              <LinearProgress color="secondary" />
-              <LinearProgress color="success" />
-              <LinearProgress color="inherit" />
-            </Stack>
+            <Loading />
           )}
         </div>
 

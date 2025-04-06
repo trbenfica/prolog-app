@@ -1,9 +1,10 @@
-import { Box, Typography, Paper, CircularProgress } from "@mui/material";
+import { Box, Typography, Paper } from "@mui/material";
 import { useParams } from "react-router";
 import useGetTireById from "../hooks/useGetTireById";
 import { format } from "date-fns";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import ErrorAlert from "./ErrorAlert";
+import Loading from "./Loading";
 
 export const TireDetails = () => {
   const params = useParams();
@@ -19,7 +20,7 @@ export const TireDetails = () => {
     return <ErrorAlert message="error: tireId is invalid" />;
   }
 
-  if (isPending) return <CircularProgress />;
+  if (isPending) return <Loading />;
   if (isError) return <ErrorAlert message={error.message} />;
 
   const rows = [

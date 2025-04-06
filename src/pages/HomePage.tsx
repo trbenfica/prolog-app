@@ -1,5 +1,6 @@
 import TireGrid from "../components/TireGrid";
 import useGetAllTires from "../hooks/useGetAllTires";
+import AppButton from "../components/AppButton";
 
 const HomePage = () => {
   const { refetch } = useGetAllTires();
@@ -9,7 +10,7 @@ const HomePage = () => {
       <h1>Prolog</h1>
       <h2>Gestão de frota</h2>
 
-      <button onClick={() => refetch()}>Atualizar lista</button>
+      <AppButton onClick={() => refetch()}>Atualizar lista</AppButton>
 
       <TireGrid />
     </div>

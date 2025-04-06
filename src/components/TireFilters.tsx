@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box, TextField, Typography } from "@mui/material";
 import { TireFilterState, TireRequestParams } from "../types/types";
+import AppButton from "./AppButton";
 
 interface TireFiltersProps {
   onChange: (filters: TireFilterState) => void;
@@ -116,7 +117,7 @@ const TireFilters = ({ onChange, initialState }: TireFiltersProps) => {
         }
       />
 
-      <button onClick={handleApplyFilter}>Aplicar Filtros</button>
+      <AppButton onClick={handleApplyFilter}>Aplicar Filtros</AppButton>
     </Box>
   );
 };

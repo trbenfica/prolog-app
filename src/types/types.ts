@@ -50,7 +50,7 @@ export interface Tire {
   purchaseCost: number;
   newTire: boolean;
   status: string;
-  createdAt: string; // ou Date, se for convertido
+  createdAt: string;
   tireSize: TireSize;
   make: Make;
   model: TireModel;

@@ -1,5 +1,7 @@
-const Tire = () => {
-  return <div>Tire</div>;
+import { TireDetails } from "../components/TireDetails";
+
+const TirePage = () => {
+  return <TireDetails />;
 };
 
-export default Tire;
+export default TirePage;

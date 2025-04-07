@@ -105,7 +105,7 @@ export const TireDetails = () => {
       <Typography variant="h4" gutterBottom>
         Detalhes do Pneu
       </Typography>
-      <Box sx={{ height: 600, width: "100%" }}>
+      <Box sx={{ minHeight: 600, height: "100%", width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns}

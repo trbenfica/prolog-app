@@ -51,7 +51,7 @@ const TireFilters = ({
         gap={2}
         sx={{
           backgroundColor: "white",
-          padding: "50px",
+          padding: "40px",
           color: "black",
           borderRadius: 8,
           width: "40%",

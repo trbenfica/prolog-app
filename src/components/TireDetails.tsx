@@ -112,6 +112,7 @@ export const TireDetails = () => {
           disableColumnMenu
           hideFooter
           rowSelection={false}
+          data-testid="tire-details-table"
         />
       </Box>
     </Paper>

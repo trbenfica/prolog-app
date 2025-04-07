@@ -15,6 +15,7 @@ const ErrorAlert = ({ message }: ErrorAlertProps) => {
       }}
       severity="error"
       variant="filled"
+      data-testid="error-alert"
     >
       {message}
     </Alert>

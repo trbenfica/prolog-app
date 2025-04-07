@@ -45,6 +45,7 @@ const TireFilters = ({
       open={open}
     >
       <Box
+        data-testid="filtro-form"
         display="flex"
         flexDirection="column"
         gap={2}

@@ -1,4 +1,4 @@
-import { TireList } from "../components/TireList";
+import TireTable from "../components/TireTable";
 
 const HomePage = () => {
   return (
@@ -6,7 +6,7 @@ const HomePage = () => {
       <h1>Prolog</h1>
       <h2 className="mb-2">Gestão de frota</h2>
 
-      <TireList />
+      <TireTable />
     </div>
   );
 };

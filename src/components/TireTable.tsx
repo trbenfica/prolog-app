@@ -23,6 +23,7 @@ const columns: GridColDef[] = [
       <Link
         to={`/tires/${params.row.id}`}
         style={{ color: theme.palette.primary.main }}
+        data-testid="tire-detail-icon"
       >
         <ArrowOutwardIcon />
       </Link>
@@ -46,7 +47,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-export const TireList = () => {
+export const TireTable = () => {
   const [filters, setFilters] = useState<TireFilterState>({});
   const [isFilterOpen, setFilterOpen] = useState(false);
 
@@ -80,7 +81,7 @@ export const TireList = () => {
 
           <AppButton color="success" onClick={() => setFilterOpen(true)}>
             <FilterAltIcon className="mr-1" />
-            Filtros
+            Filtrar
           </AppButton>
         </div>
 
@@ -88,6 +89,7 @@ export const TireList = () => {
           {!isPending ? (
             <DataGrid
               style={{ width: "100%" }}
+              data-testid="tire-table"
               rows={data.content}
               columns={columns}
               pagination
@@ -116,3 +118,5 @@ export const TireList = () => {
     </>
   );
 };
+
+export default TireTable;

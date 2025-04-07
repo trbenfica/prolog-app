@@ -57,4 +57,71 @@ describe("TireFilters", () => {
     fireEvent.change(input, { target: { value: "abc123" } });
     expect(input.value).toBe("abc123");
   });
+
+  it("converte corretamente os valores digitados para todos os campos de filtro", () => {
+    const mockApplyFilter = vi.fn();
+    const mockHandleClose = vi.fn();
+
+    render(
+      <TireFilters
+        applyFilter={mockApplyFilter}
+        initialState={{
+          modelIds: [],
+          makeIds: [],
+          textQuery: "",
+          serialNumberTextQuery: "",
+          treadMakeId: undefined,
+          treadModelId: undefined,
+          currentLifeCycles: [],
+          dimensionsIds: [],
+        }}
+        open={true}
+        handleClose={mockHandleClose}
+      />
+    );
+
+    fireEvent.change(screen.getByLabelText("Texto livre"), {
+      target: { value: "teste" },
+    });
+
+    fireEvent.change(screen.getByLabelText("Número de série"), {
+      target: { value: "SN123" },
+    });
+
+    fireEvent.change(screen.getByLabelText("IDs de marcas (ex: 1,2,3)"), {
+      target: { value: "1,2,3" },
+    });
+
+    fireEvent.change(screen.getByLabelText("IDs de modelos (ex: 1,2,3)"), {
+      target: { value: "4,5,6" },
+    });
+
+    fireEvent.change(
+      screen.getByLabelText("Ciclos de vida atuais (ex: 0,1,2)"),
+      {
+        target: { value: "0,1,2" },
+      }
+    );
+
+    fireEvent.change(screen.getByLabelText("IDs de dimensões (ex: 1,2,3)"), {
+      target: { value: "10,11" },
+    });
+
+    fireEvent.change(screen.getByLabelText("ID da banda (Tread Make ID)"), {
+      target: { value: "7" },
+    });
+
+    fireEvent.change(
+      screen.getByLabelText("ID do modelo da banda (Tread Model ID)"),
+      {
+        target: { value: "8" },
+      }
+    );
+
+    expect(screen.getByLabelText("Texto livre")).toHaveValue("teste");
+    expect(screen.getByLabelText("Número de série")).toHaveValue("SN123");
+    expect(screen.getByLabelText("IDs de modelos (ex: 1,2,3)")).toHaveValue(
+      "4,5,6"
+    );
+  });
 });

@@ -6,6 +6,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import ErrorAlert from "./ErrorAlert";
 import Loading from "./Loading";
 import { motion } from "motion/react";
+import AppButton from "./AppButton";
 
 export const TireDetails = () => {
   const params = useParams();
@@ -15,7 +16,13 @@ export const TireDetails = () => {
       ? parseInt(params.tireId)
       : NaN;
 
-  const { data: tire, isPending, isError, error } = useGetTireById(tireId);
+  const {
+    data: tire,
+    isPending,
+    isError,
+    error,
+    refetch,
+  } = useGetTireById(tireId);
 
   if (isNaN(tireId)) {
     return <ErrorAlert message="error: tireId is invalid" />;
@@ -108,9 +115,10 @@ export const TireDetails = () => {
       transition={{ duration: 1.8 }}
     >
       <Paper sx={{ p: 4 }}>
-        <Typography variant="h4" gutterBottom>
-          Detalhes do Pneu
-        </Typography>
+        <div className="flex flex-col justify-center items-center mb-4 gap-y-4">
+          <Typography variant="h4">Detalhes do Pneu</Typography>
+          <AppButton onClick={() => refetch()}>Atualizar</AppButton>
+        </div>
         <Box sx={{ minHeight: 600, height: "100%", width: "100%" }}>
           <DataGrid
             rows={rows}

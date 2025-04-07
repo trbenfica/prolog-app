@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import HomePage from "./pages/HomePage.tsx";
 import { ThemeProvider } from "@emotion/react";
-import theme from "./config/palette.tsx";
+import theme from "./config/palette.ts";
 import TirePage from "./pages/TirePage.tsx";
 
 const queryClient = new QueryClient();

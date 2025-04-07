@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router";
 import { describe, it, vi, expect, beforeEach } from "vitest";
-import { TireDetails } from "./TireDetails";
-import useGetTireById from "../hooks/useGetTireById";
+import { TireDetails } from "../TireDetails";
+import useGetTireById from "../../hooks/useGetTireById";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-vi.mock("../hooks/useGetTireById", () => ({
+vi.mock("../../hooks/useGetTireById", () => ({
   default: vi
     .fn()
     .mockReturnValue({ data: {}, isPending: true, isError: true, error: "" }),

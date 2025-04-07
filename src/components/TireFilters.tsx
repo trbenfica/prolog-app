@@ -59,7 +59,7 @@ const TireFilters = ({
           alignItems: "center",
         }}
       >
-        <Typography variant="h4">Aplicar Filtros</Typography>
+        <Typography variant="h4">Filtrar Resultados</Typography>
 
         <TextField
           label="Texto livre"

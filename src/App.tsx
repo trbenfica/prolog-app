@@ -13,8 +13,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <Header />
         <BrowserRouter>
+          <Header />
           <div
             style={{
               marginTop: "40px",

@@ -11,6 +11,7 @@ import TireFilters from "./TireFilters";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import ErrorAlert from "./ErrorAlert";
 import Loading from "./Loading";
+import { motion } from "motion/react";
 
 const columns: GridColDef[] = [
   {
@@ -58,6 +59,10 @@ export const TireTable = () => {
       ...filters,
     });
 
+  if (isPending) {
+    return <Loading />;
+  }
+
   if (isError) {
     return <ErrorAlert message={error.message} />;
   }
@@ -73,8 +78,24 @@ export const TireTable = () => {
         />
       )}
 
+      <div className="h-full flex flex-col gap-y-4 items-center px-4">
+        <motion.div
+          initial={{ x: -400, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 2 }}
+        >
+          <h1>Prolog</h1>
+          <h2 className="mb-2">Gestão de frota</h2>
+        </motion.div>
+      </div>
+
       <div className="w-full  flex flex-col gap-y-6 justify-center items-center">
-        <div className="flex gap-x-4">
+        <motion.div
+          initial={{ x: 400, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 2 }}
+          className="flex gap-x-4"
+        >
           <AppButton isLoading={isFetching} onClick={() => refetch()}>
             Atualizar lista
           </AppButton>
@@ -83,24 +104,29 @@ export const TireTable = () => {
             <FilterAltIcon className="mr-1" />
             Filtrar
           </AppButton>
-        </div>
+        </motion.div>
 
         <div className="w-full min-h-[400px]">
-          {!isPending ? (
-            <DataGrid
-              style={{ width: "100%" }}
-              data-testid="tire-table"
-              rows={data.content}
-              columns={columns}
-              pagination
-              pageSizeOptions={[10, 25, 50]}
-              initialState={{
-                pagination: { paginationModel: { pageSize: 10, page: 0 } },
-              }}
-              getRowId={(row) => row.id}
-            />
-          ) : (
-            <Loading />
+          {!isPending && (
+            <motion.div
+              initial={{ x: 400, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 2 }}
+              className="w-full  flex flex-col gap-y-6 justify-center items-center"
+            >
+              <DataGrid
+                style={{ width: "100%" }}
+                data-testid="tire-table"
+                rows={data.content}
+                columns={columns}
+                pagination
+                pageSizeOptions={[10, 25, 50]}
+                initialState={{
+                  pagination: { paginationModel: { pageSize: 10, page: 0 } },
+                }}
+                getRowId={(row) => row.id}
+              />
+            </motion.div>
           )}
         </div>
 

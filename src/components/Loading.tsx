@@ -1,21 +1,10 @@
-import { LinearProgress, Stack } from "@mui/material";
+import { ClockLoader } from "react-spinners";
 
 const Loading = () => {
   return (
-    <Stack
-      sx={{
-        width: "100%",
-        color: "grey.500",
-        height: "400px",
-        justifyContent: "center",
-      }}
-      spacing={2}
-      data-testid="loading"
-    >
-      <LinearProgress color="secondary" />
-      <LinearProgress color="success" />
-      <LinearProgress color="inherit" />
-    </Stack>
+    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+      <ClockLoader color="#3d5fd9" data-testid="loading" />
+    </div>
   );
 };
 

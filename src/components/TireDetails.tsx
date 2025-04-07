@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import ErrorAlert from "./ErrorAlert";
 import Loading from "./Loading";
+import { motion } from "motion/react";
 
 export const TireDetails = () => {
   const params = useParams();
@@ -101,20 +102,26 @@ export const TireDetails = () => {
   ];
 
   return (
-    <Paper sx={{ p: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        Detalhes do Pneu
-      </Typography>
-      <Box sx={{ minHeight: 600, height: "100%", width: "100%" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          disableColumnMenu
-          hideFooter
-          rowSelection={false}
-          data-testid="tire-details-table"
-        />
-      </Box>
-    </Paper>
+    <motion.div
+      initial={{ x: 200, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 1.8 }}
+    >
+      <Paper sx={{ p: 4 }}>
+        <Typography variant="h4" gutterBottom>
+          Detalhes do Pneu
+        </Typography>
+        <Box sx={{ minHeight: 600, height: "100%", width: "100%" }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            disableColumnMenu
+            hideFooter
+            rowSelection={false}
+            data-testid="tire-details-table"
+          />
+        </Box>
+      </Paper>
+    </motion.div>
   );
 };

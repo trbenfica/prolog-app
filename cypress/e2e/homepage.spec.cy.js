@@ -27,4 +27,21 @@ describe("Página inicial", () => {
     cy.url().should("include", "/tires/");
     cy.contains("ID").should("be.visible");
   });
+
+  it("deve exibir mensagem de erro se a API falhar", () => {
+    cy.intercept("GET", "https://prologapp.com/prolog/api/v3/*", {
+      statusCode: 500,
+      body: { message: "Erro interno" },
+    }).as("getTiresWithError");
+
+    cy.visit("/");
+
+    cy.wait("@getTiresWithError");
+    cy.wait("@getTiresWithError");
+    cy.wait("@getTiresWithError");
+
+    cy.get('[data-testid="error-alert"]', { timeout: 7000 }).should(
+      "be.visible"
+    );
+  });
 });

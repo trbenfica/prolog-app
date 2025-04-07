@@ -1,0 +1,46 @@
+{
+  "id": 139502,
+  "serialNumber": "32141",
+  "companyGroupId": 15,
+  "companyGroupName": "Empurrada",
+  "branchOfficeId": 215,
+  "branchOfficeName": "São Paulo",
+  "currentLifeCycle": 4,
+  "timesRetreaded": 3,
+  "maxRetreadsExpected": 3,
+  "recommendedPressure": 100.0,
+  "currentPressure": 0.0,
+  "middleInnerTreadDepth": 15.0,
+  "outerTreadDepth": 15.0,
+  "middleOuterTreadDepth": 15.0,
+  "innerTreadDepth": 15.0,
+  "dot": "1111",
+  "purchaseCost": 1000,
+  "newTire": false,
+  "status": "DISPOSAL",
+  "createdAt": "2019-09-27T12:20:34.434107Z",
+  "tireSize": { "id": 246, "height": 700.0, "width": 12.0, "rim": 0.0 },
+  "make": { "id": 393, "name": "Apollo 14we" },
+  "model": {
+    "id": 1331,
+    "name": "4005B",
+    "groovesQuantity": 4,
+    "treadDepth": 15.0
+  },
+  "currentRetread": {
+    "make": { "id": 19, "name": "Banda10" },
+    "model": {
+      "id": 31,
+      "name": "ModeloTeste",
+      "groovesQuantity": 4,
+      "treadDepth": 15.0
+    },
+    "retreadCost": 1122.22
+  },
+  "disposal": {
+    "disposalReasonId": 76,
+    "disposalReasonDescription": "Rodagem vazio ou com baixa pressão",
+    "disposalImagesUrl": []
+  },
+  "registrationImages": []
+}

@@ -1,4 +1,4 @@
-// TireFilters.test.tsx
+// @ts-nocheck
 import { render, screen, fireEvent } from "@testing-library/react";
 import TireFilters from "../TireFilters";
 import { describe, it, vi, expect } from "vitest";

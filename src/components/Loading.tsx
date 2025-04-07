@@ -10,6 +10,7 @@ const Loading = () => {
         justifyContent: "center",
       }}
       spacing={2}
+      data-testid="loading"
     >
       <LinearProgress color="secondary" />
       <LinearProgress color="success" />

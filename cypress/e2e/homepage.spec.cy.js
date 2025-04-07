@@ -29,7 +29,7 @@ describe("Página inicial", () => {
   });
 
   it("deve exibir mensagem de erro se a API falhar", () => {
-    cy.intercept("GET", "https://prologapp.com/prolog/api/v3/*", {
+    cy.intercept("GET", `${Cypress.env("apiUrl")}/*`, {
       statusCode: 500,
       body: { message: "Erro interno" },
     }).as("getTiresWithError");

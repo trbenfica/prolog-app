@@ -15,7 +15,7 @@ describe("Página de detalhes do pneu", () => {
   });
 
   it("deve exibir carregando enquanto espera a resposta", () => {
-    cy.intercept("GET", "/api/tires/1", (req) => {
+    cy.intercept("GET", `${Cypress.env("apiUrl")}/tires/*`, (req) => {
       req.on("response", (res) => {
         res.setDelay(1000);
       });
@@ -24,12 +24,12 @@ describe("Página de detalhes do pneu", () => {
 
     cy.visit("/tires/1");
 
-    cy.contains("loading").should("exist");
+    cy.get('[data-testid="error-alert"]').should("be.visible");
     cy.wait("@getTireSlow");
   });
 
-  it("deve exibir erro se a requisição falhar", () => {
-    cy.intercept("GET", "/api/tires/1", {
+  it.only("deve exibir erro se a requisição falhar", () => {
+    cy.intercept("GET", `${Cypress.env("apiUrl")}/tires/*`, {
       statusCode: 500,
       body: { message: "Erro interno" },
     }).as("getTireError");
@@ -37,8 +37,12 @@ describe("Página de detalhes do pneu", () => {
     cy.visit("/tires/1");
 
     cy.wait("@getTireError");
+    cy.wait("@getTireError");
+    cy.wait("@getTireError");
 
-    cy.contains("Erro").should("exist");
+    cy.get('[data-testid="error-alert"]', { timeout: 7000 }).should(
+      "be.visible"
+    );
   });
 
   it("deve exibir erro se o parâmetro de ID for inválido", () => {

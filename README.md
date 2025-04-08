@@ -130,12 +130,6 @@ npm run dev
 npm run cy:open
 ```
 
-3. **Ou, se preferir, execute os testes no modo headless (terminal):**:
-
-```sh
-npx cypress run
-```
-
 ⚠️ **Importante:** a aplicação deve estar rodando **na porta 5173** para que os testes funcionem corretamente.
 
 ## Screenshots

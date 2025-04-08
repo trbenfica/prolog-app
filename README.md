@@ -67,13 +67,13 @@
 1. Clone o repositório
 
 ```sh
-git clone https://github.com/seu-usuario/seu-repo.git
+git clone https://github.com/trbenfica/prolog-app.git
 ```
 
 2. Acesse o diretório do projeto
 
 ```sh
-cd seu-repo
+cd prolog-app
 ```
 
 3. Instale as dependências
@@ -121,7 +121,7 @@ npm run dev
 2. **Execute o Cypress no modo interativo (GUI):**:
 
 ```sh
-npx cypress open
+npm run cy:open
 ```
 
 3. **Ou, se preferir, execute os testes no modo headless (terminal):**:

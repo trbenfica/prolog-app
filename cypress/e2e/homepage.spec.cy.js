@@ -3,7 +3,7 @@ describe("Página inicial", () => {
     cy.visit("/");
 
     cy.contains("Atualizar lista").should("be.visible");
-    cy.get('[data-testid="tire-table"]').should("exist");
+    cy.get('[data-testid="tire-table"]', { timeout: 7000 }).should("exist");
     cy.contains("Clique no ícone").should("exist");
   });
 

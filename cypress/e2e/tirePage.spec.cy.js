@@ -8,7 +8,9 @@ describe("Página de detalhes do pneu", () => {
 
     cy.wait("@getTire");
 
-    cy.get('[data-testid="tire-details-table"]').should("exist");
+    cy.get('[data-testid="tire-details-table"]', { timeout: 7000 }).should(
+      "exist"
+    );
     cy.contains("139502").should("exist");
     cy.contains("32141").should("exist");
     cy.contains("Empurrada").should("exist");

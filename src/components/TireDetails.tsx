@@ -22,6 +22,7 @@ export const TireDetails = () => {
     isError,
     error,
     refetch,
+    isFetching,
   } = useGetTireById(tireId);
 
   if (isNaN(tireId)) {
@@ -117,7 +118,9 @@ export const TireDetails = () => {
       <Paper sx={{ p: 4 }}>
         <div className="flex flex-col justify-center items-center mb-4 gap-y-4">
           <Typography variant="h4">Detalhes do Pneu</Typography>
-          <AppButton onClick={() => refetch()}>Atualizar</AppButton>
+          <AppButton isLoading={isFetching} onClick={() => refetch()}>
+            Atualizar
+          </AppButton>
         </div>
         <Box sx={{ minHeight: 600, height: "100%", width: "100%" }}>
           <DataGrid

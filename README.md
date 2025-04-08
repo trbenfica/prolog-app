@@ -64,10 +64,16 @@
 
 ⚠️ **Importante:** a porta `5173` precisa estar disponível, pois é utilizada pelos testes end-to-end com o Cypress. Caso ela esteja ocupada por outro processo, a aplicação emitirá um erro e a execução dos testes será impedida até que a porta esteja liberada.
 
-1. Clone o repositório
+🔒 **Atenção:** este repositório está marcado como privado, conforme solicitado na especificação do desafio técnico.  
+Por isso, para cloná-lo, você precisa:
+
+- Ter acesso concedido ao repositório (já feito para os avaliadores).
+- Estar autenticado no GitHub via chave SSH **ou** usando um [Personal Access Token (PAT)](https://github.com/settings/tokens).
+
+1. Clonagem via SSH (recomendado):
 
 ```sh
-git clone https://github.com/trbenfica/prolog-app.git
+git clone git@github.com:trbenfica/prolog-app.git
 ```
 
 2. Acesse o diretório do projeto

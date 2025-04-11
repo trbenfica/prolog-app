@@ -1,12 +1,12 @@
 ## ✅ Requisitos atendidos
 
-- ✅ **ReactJS puro**: o projeto foi criado com Vite, utilizando apenas ReactJS.
+- **ReactJS puro**: o projeto foi criado com Vite, utilizando apenas ReactJS.
 
-- ✅ **TypeScript**: o projeto foi inteiramente desenvolvido com TypeScript, incluindo os testes.
+- **TypeScript**: o projeto foi inteiramente desenvolvido com TypeScript, incluindo os testes.
 
-- ✅ **Sistema de rotas**: implementado com `react-router`. As rotas estão centralizadas no componente `App.tsx`.
+- **Sistema de rotas**: implementado com `react-router`. As rotas estão centralizadas no componente `App.tsx`.
 
-- ✅ **Listagem de pneus**:
+- **Listagem de pneus**:
 
   - Consome o endpoint de listagem: `GET /tires`
 
@@ -14,7 +14,7 @@
 
   - Todos os filtros estão funcionais
 
-- ✅ **Página de detalhes de pneu**:
+- **Página de detalhes de pneu**:
 
   - Rota: `/tires/:tireId`
 
@@ -22,13 +22,13 @@
 
   - Exibe todas as informações do pneu selecionado.
 
-- ✅ **Tratamento de erros**:
+- **Tratamento de erros**:
 
   - Falhas nas requisições são tratadas com fallback de erro.
 
   - Mensagens amigáveis são exibidas para o usuário.
 
-- ✅ **Testes automatizados**:
+- **Testes automatizados**:
 
   - Testes de e2e com **Cypress**.
 
@@ -50,22 +50,19 @@
 
 ## 🚀 Funcionalidades extras
 
-- 🧠 **Cache de requisições** na página de detalhes do pneu. Durante o intervalo estabelecido (15 segundos), os dados previamente carregados não são buscados novamente (observe no DevTools).
+- **Cache de requisições** na página de detalhes do pneu. Durante o intervalo estabelecido (15 segundos), os dados previamente carregados não são buscados novamente (observe no DevTools).
 
-- 🎬 **Animações na UI** usando `framer-motion`.
+- **Animações na UI** usando `framer-motion`.
 
-- 📊 **Tabela com ordenação (sorting)** por colunas na listagem de pneus.
+- **Tabela com ordenação (sorting)** por colunas na listagem de pneus.
 
-- 🛡️ **Validação das variáveis de ambiente com Zod**, garantindo maior robustez.
+- **Validação das variáveis de ambiente com Zod**, garantindo maior robustez.
 
-- 🔄 **"Load while stale"**: exibição de dados antigos enquanto os novos são carregados, melhorando a experiência do usuário.
+- **"Load while stale"**: exibição de dados antigos enquanto os novos são carregados, melhorando a experiência do usuário.
 
 ## ▶️ Como rodar o projeto
 
 ⚠️ **Importante:** a porta `5173` precisa estar disponível, pois é utilizada pelos testes end-to-end com o Cypress. Caso ela esteja ocupada por outro processo, a aplicação emitirá um erro e a execução dos testes será impedida até que a porta esteja liberada.
-
-🔒 **Atenção:** este repositório está marcado como privado, conforme solicitado na especificação do desafio técnico.  
-Por isso, para cloná-lo, você precisa:
 
 - Ter acesso concedido ao repositório (já feito para os avaliadores).
 - Estar autenticado no GitHub via chave SSH **ou** usando um [Personal Access Token (PAT)](https://github.com/settings/tokens).
@@ -96,7 +93,7 @@ npm run dev
 
 ## 🧪 Como rodar os testes
 
-### ✅ Testes unitários e de integração (Vitest)
+### Testes unitários e de integração (Vitest)
 
 Os testes unitários e de integração estão localizados na pasta `src/components/__tests__` e `src/hooks/__tests__`.
 
@@ -114,7 +111,7 @@ npm run coverage
 
 O relatório será salvo na pasta `coverage/` e pode ser visualizado abrindo `coverage/index.html` no navegador.
 
-### ✅ Testes end-to-end (Cypress)
+### Testes end-to-end (Cypress)
 
 Os testes de E2E com Cypress estão na pasta `cypress/e2e`.
 
